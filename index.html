@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>NEXORA // Agent Verification</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="scanlines"></div>
+
+    <main class="container">
+      <!-- HEADER -->
+      <header class="topbar">
+        <div class="brand">
+          <img src="assets/NEXORA.png" alt="NEXORA Logo" class="nexora-logo" />
+
+          <div>
+            <h1>NEXORA</h1>
+            <p>SECURE PERSONNEL SYSTEM</p>
+          </div>
+        </div>
+
+        <div class="system-status">
+          <span class="status-dot"></span>
+          SYSTEM ONLINE
+        </div>
+      </header>
+
+      <!-- MAIN CONTENT -->
+      <section class="verification">
+        <div class="section-label">
+          <span>ACCESS POINT // 021</span>
+          <span>PERSONNEL VERIFICATION</span>
+        </div>
+
+        <!-- AGENT CARD -->
+        <div class="agent-card">
+          <div class="card-header">
+            <div>
+              <p class="small-label">IDENTITY VERIFIED</p>
+              <h2>AGENT PROFILE</h2>
+            </div>
+
+            <div class="verification-badge">✓ VERIFIED</div>
+          </div>
+
+          <div class="agent-content">
+            <!-- PHOTO PLACEHOLDER -->
+            <div class="photo-placeholder">
+              <img src="assets/Phennn.png" alt="Phennn Nox" />
+            </div>
+
+            <!-- INFORMATION -->
+            <div class="agent-info">
+              <div class="info-group">
+                <span class="info-label">FULL NAME</span>
+                <span class="info-value large">PHENNN NOX</span>
+              </div>
+
+              <div class="info-row">
+                <div class="info-group">
+                  <span class="info-label">AGENT ID</span>
+                  <span class="info-value">NX-021</span>
+                </div>
+
+                <div class="info-group">
+                  <span class="info-label">CLEARANCE</span>
+                  <span class="info-value">LEVEL 03</span>
+                </div>
+              </div>
+
+              <div class="info-group">
+                <span class="info-label">DIVISION</span>
+                <span class="info-value">FIELD OPERATIONS</span>
+              </div>
+
+              <div class="info-group">
+                <span class="info-label">STATUS</span>
+
+                <span class="status-active">
+                  <span class="status-dot"></span>
+                  ACTIVE
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ATTENDANCE -->
+        <div class="attendance-card">
+          <div class="attendance-header">
+            <div>
+              <p class="small-label">ATTENDANCE RECORD</p>
+              <h2>AGENT CHECK-IN</h2>
+            </div>
+
+            <div class="attendance-icon">✓</div>
+          </div>
+
+          <div class="attendance-status">
+            <div class="present-indicator">
+              <span class="big-dot"></span>
+
+              <div>
+                <span class="present-label">PRESENT</span>
+                <span class="present-description">
+                  Agent successfully verified
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="attendance-details">
+            <div class="detail">
+              <span class="info-label">DATE</span>
+              <span class="info-value" id="attendance-date"> LOADING... </span>
+            </div>
+
+            <div class="detail">
+              <span class="info-label">CHECK-IN TIME</span>
+              <span class="info-value" id="attendance-time"> --:--:-- </span>
+            </div>
+
+            <div class="detail">
+              <span class="info-label">LOCATION</span>
+              <span class="info-value">NEXORA HQ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SYSTEM MESSAGE -->
+        <div class="system-message">
+          <div class="message-icon">!</div>
+
+          <div>
+            <span class="message-title"> SECURITY NOTICE </span>
+
+            <p>
+              This record is intended for authorized NEXORA personnel only.
+              Unauthorized access or duplication of this identity record is
+              prohibited.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer>
+        <div>NEXORA INTERNAL SYSTEM</div>
+
+        <div>
+          NODE: NX-HQ-01
+          <span class="separator">•</span>
+          CONNECTION SECURE
+        </div>
+      </footer>
+    </main>
+    <script>
+      function setCheckInTime() {
+        const now = new Date();
+
+        const dateOptions = {
+          timeZone: "Asia/Jakarta",
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        };
+
+        const timeOptions = {
+          timeZone: "Asia/Jakarta",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        };
+
+        const date = new Intl.DateTimeFormat("en-GB", dateOptions).format(now);
+
+        const time = new Intl.DateTimeFormat("en-GB", timeOptions).format(now);
+
+        document.getElementById("attendance-date").textContent =
+          date.toUpperCase();
+
+        document.getElementById("attendance-time").textContent = time;
+      }
+
+      // Get the time ONCE when the page is opened
+      setCheckInTime();
+    </script>
+  </body>
+</html>
